@@ -1,6 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -20,8 +20,8 @@ public class PracticeFormTest {
         Configuration.baseUrl = "https://demoqa.com";
     }
 
-    @AfterAll
-    static void afterAll() {
+    @AfterEach
+    void afterEach() {
         Selenide.closeWebDriver();
     }
 
@@ -43,7 +43,7 @@ public class PracticeFormTest {
         $("#subjectsInput").setValue("Chemistry").pressEnter();
         $(byText("Reading")).click();
         $(byText("Sports")).click();
-        File pic = new File("src/test/test.jpg");
+        File pic = new File("src/test/resourses/test.jpg");
         $("#uploadPicture").uploadFile(pic);
         $("#currentAddress").sendKeys("Земля");
         $("#react-select-3-input").setValue("NCR").pressEnter();
