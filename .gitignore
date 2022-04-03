@@ -3,6 +3,8 @@
 # Idea's files and folders
 .idea/
 .idea_modules/
+.build/
+.gradle/
 
 # IntelliJ
 out/
@@ -26,11 +28,6 @@ out/
 *.tar.gz
 *.rar
 *.iml
-
-### Gradle ###
-.gradle
-**/build/
-!src/**/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
