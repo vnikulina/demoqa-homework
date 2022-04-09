@@ -1,8 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -16,7 +14,7 @@ public class PracticeFormTest {
     @BeforeAll
     static void beforeAll() {
         Configuration.holdBrowserOpen = true;
-        Configuration.browserSize = "1080x1920";
+        Configuration.browserSize = "1440x1080";
         Configuration.browserPosition = "0x0";
         Configuration.baseUrl = "https://demoqa.com";
     }
@@ -24,6 +22,7 @@ public class PracticeFormTest {
     @Test
     void successFilledInForm() {
         open("/automation-practice-form");
+        Selenide.zoom(0.95);
         $(".main-header").shouldHave(text("Practice Form"));
         $("#firstName").setValue("Лера");
         $("#lastName").setValue("Никулина");
@@ -39,13 +38,13 @@ public class PracticeFormTest {
         $("#subjectsInput").setValue("Physics").pressEnter();
         $(byText("Reading")).click();
         $(byText("Sports")).click();
-        File pic = new File("src/test/resourses/test.jpg");
+        File pic = new File("src/test/resources/test.jpg");
         $("#uploadPicture").uploadFile(pic);
         $("#currentAddress").sendKeys("Земля");
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("#react-select-4-input").setValue("Delhi").pressEnter();
-        //$("#react-select-4-input").click();
         $("#submit").scrollIntoView(true).click();
+
         //Check this form
         $(".modal-header").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text("Лера Никулина"),
